@@ -1,7 +1,7 @@
 import pymssql._pymssql as db
-import employee_helper as emp
+import resource_helper as emp
 
-cnn = db.connect(host='FONHST2SVR', database='Demo')
+cnn = db.connect(host='FONHST2SVR', database='ResourceDB')
 
 cursor = cnn.cursor()
 
@@ -11,7 +11,7 @@ data = cursor.fetchall()
 
 for row in data:
     employee = emp.EmployeeHelper.create_employee(row)
-    print(f"{employee.ID} -> {employee.Name}, {employee.Department}")
+    print(f"{employee.ID} -> {employee.firstName}, {employee.lastName}")
 
 cursor.close()
 cnn.close()
